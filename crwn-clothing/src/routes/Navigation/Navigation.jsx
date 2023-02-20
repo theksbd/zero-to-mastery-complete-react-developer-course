@@ -1,12 +1,17 @@
 import { Fragment, useContext } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { ReactComponent as FashionistaLogo } from '../../assets/crown.svg';
-import './Navigation.scss';
+import CartDropdown from '../../components/CartDropdown/CartDropdown';
+import CartIcon from '../../components/CartIcon/CartIcon';
+import { CartContext } from '../../contexts/CartContext';
 import { UserContext } from '../../contexts/UserContext';
 import { signOutUser } from '../../utils/firebase/firebase';
-import CartIcon from '../../components/CartIcon/CartIcon';
-import CartDropdown from '../../components/CartDropdown/CartDropdown';
-import { CartContext } from '../../contexts/CartContext';
+import {
+  LogoContainer,
+  NavLink,
+  NavLinks,
+  NavigationContainer
+} from './NavigationStyle';
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
@@ -14,27 +19,23 @@ const Navigation = () => {
 
   return (
     <Fragment>
-      <div className='navigation'>
-        <Link className='logo-container' to='/'>
+      <NavigationContainer>
+        <LogoContainer to='/'>
           <FashionistaLogo className='logo' />
-        </Link>
-        <div className='nav-links-container'>
-          <Link className='nav-link' to='/shop'>
-            SHOP
-          </Link>
+        </LogoContainer>
+        <NavLinks>
+          <NavLink to='/shop'>SHOP</NavLink>
           {currentUser ? (
-            <span className='nav-link' onClick={signOutUser}>
+            <NavLink as='span' onClick={signOutUser}>
               SIGN OUT
-            </span>
+            </NavLink>
           ) : (
-            <Link className='nav-link' to='/auth'>
-              SIGN IN
-            </Link>
+            <NavLink to='/auth'>SIGN IN</NavLink>
           )}
           <CartIcon />
-        </div>
+        </NavLinks>
         {isCartOpen && <CartDropdown />}
-      </div>
+      </NavigationContainer>
       <Outlet />
     </Fragment>
   );

@@ -1,5 +1,4 @@
-import { createContext, useEffect } from 'react';
-import { useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import {
   createUserDocumentFromAuth,
   onAuthStateChangedListener
@@ -28,3 +27,4 @@ const UserProvider = ({ children }) => {
 };
 
 export { UserContext, UserProvider };
+
