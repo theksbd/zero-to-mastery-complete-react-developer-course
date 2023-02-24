@@ -32,5 +32,5 @@ export const CartItems = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflow: auto;
 `;
