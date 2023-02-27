@@ -1,3 +1,5 @@
+/* No longer used, I have migrated to Redux, keep this for reference */
+
 import { createContext, useEffect, useReducer } from 'react';
 import {
   createUserDocumentFromAuth,

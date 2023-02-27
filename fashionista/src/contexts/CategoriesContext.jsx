@@ -1,3 +1,5 @@
+/* No longer used, I have migrated to Redux, keep this for reference */
+
 // import SHOP_DATA from '../shop-data.js';
 // import { addCollectionAndDocuments } from '../utils/firebase/firebase.js';
 import { createContext, useEffect, useState } from 'react';
@@ -36,4 +38,3 @@ const CategoriesProvider = ({ children }) => {
 };
 
 export { CategoriesContext, CategoriesProvider };
-

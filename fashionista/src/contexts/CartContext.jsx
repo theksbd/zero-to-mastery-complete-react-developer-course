@@ -59,6 +59,7 @@ const CART_ACTION_TYPES = {
 
 const cartReducer = (state, action) => {
   const { type, payload } = action;
+  
   switch (type) {
     case CART_ACTION_TYPES.TOGGLE_CART_OPEN:
       return { ...state, isCartOpen: payload };
