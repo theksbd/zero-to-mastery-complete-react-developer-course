@@ -1,23 +1,23 @@
 import { initializeApp } from 'firebase/app';
 import {
-  getAuth,
-  signInWithRedirect,
-  signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
+  signInWithPopup,
+  signInWithRedirect,
+  signOut
 } from 'firebase/auth';
 import {
-  getFirestore,
+  collection,
   doc,
   getDoc,
-  setDoc,
-  collection,
-  writeBatch,
+  getDocs,
+  getFirestore,
   query,
-  getDocs
+  setDoc,
+  writeBatch
 } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -59,13 +59,15 @@ const getCategoriesAndDocument = async () => {
   const q = query(collectionRef);
 
   const querySnapshot = await getDocs(q);
-  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-    const { title, items } = docSnapshot.data();
-    acc[title.toLowerCase()] = items;
-    return acc;
-  }, {});
+  return querySnapshot.docs.map(docSnapshot => docSnapshot.data());
 
-  return categoryMap;
+  // const categoriesMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+  //   const { title, items } = docSnapshot.data();
+  //   acc[title.toLowerCase()] = items;
+  //   return acc;
+  // }, {});
+
+  // return categoriesMap;
 };
 
 const createUserDocumentFromAuth = async (

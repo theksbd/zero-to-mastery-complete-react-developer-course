@@ -6,7 +6,11 @@
   "scripts": {
     "client": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint --ext js,jsx,ts,tsx src/",
+    "lint:fix": "eslint --fix --ext js,jsx,ts,tsx src/",
+    "prettier": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss,md}\"",
+    "prettier:fix": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,md}\""
   },
   "dependencies": {
     "firebase": "^9.17.1",
@@ -24,6 +28,10 @@
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.4",
     "vite": "^4.1.0"
   }
 }
