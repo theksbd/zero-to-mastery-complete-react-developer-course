@@ -18,8 +18,7 @@ indent_size = 2
   "jsxSingleQuote": true,
   "useTabs": false,
   "tabWidth": 2,
-  "semi": true,
-  "endOfLine": "lf"
+  "semi": true
 }
 ```
 
@@ -59,8 +58,7 @@ npm i -D prettier eslint-plugin-prettier eslint-config-prettier eslint-config-re
         "jsxSingleQuote": true,
         "useTabs": false,
         "tabWidth": 2,
-        "semi": true,
-        "endOfLine": "lf"
+        "semi": true
       }
     ]
   }
