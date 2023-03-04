@@ -3,7 +3,7 @@ import { setIsCartOpen } from '../../store/cart/CartAction.js';
 import {
   selectCartCount,
   selectIsCartOpen
-} from '../../store/cart/CartSelector.js';
+} from '../../store/cart/cartSelector';
 import {
   CartIconContainer,
   ItemCount,

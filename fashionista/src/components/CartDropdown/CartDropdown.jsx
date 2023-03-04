@@ -4,7 +4,7 @@ import { setIsCartOpen } from '../../store/cart/CartAction';
 import {
   selectCartItems,
   selectIsCartOpen
-} from '../../store/cart/CartSelector';
+} from '../../store/cart/cartSelector';
 import Button from '../Button/Button';
 import CartItem from '../CartItem/CartItem';
 import {

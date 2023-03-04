@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { addItemToCart, setIsCartOpen } from '../../store/cart/CartAction';
-import { selectCartItems } from '../../store/cart/CartSelector';
+import { selectCartItems } from '../../store/cart/cartSelector';
 import Button, { BUTTON_TYPE_CLASSES } from '../Button/Button';
 import './ProductCard.scss';
 

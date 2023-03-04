@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { ReactComponent as FashionistaLogo } from '../../assets/crown.svg';
 import CartDropdown from '../../components/CartDropdown/CartDropdown';
 import CartIcon from '../../components/CartIcon/CartIcon';
-import { selectIsCartOpen } from '../../store/cart/CartSelector';
+import { selectIsCartOpen } from '../../store/cart/cartSelector';
 import { selectCurrentUser } from '../../store/user/userSelector';
 import { signOutUser } from '../../utils/firebase/firebase';
 import {
