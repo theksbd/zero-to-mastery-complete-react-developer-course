@@ -6,6 +6,7 @@
 [*]
 indent_style = space
 indent_size = 2
+end_of_line = lf
 ```
 
 ## 2. Create .prettierrc file to specify the format of our code
