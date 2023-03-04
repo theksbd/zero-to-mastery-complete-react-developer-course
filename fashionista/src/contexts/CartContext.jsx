@@ -1,3 +1,5 @@
+/* No longer used, I have migrated to Redux, keep this for reference */
+
 import { createContext, useReducer } from 'react';
 import { createAction } from '../utils/reducer/reducer';
 
