@@ -4,7 +4,7 @@ import {
   clearItemFromCart,
   removeItemFromCart
 } from '../../store/cart/CartAction';
-import { selectCartItems } from '../../store/cart/CartSelector';
+import { selectCartItems } from '../../store/cart/cartSelector';
 import './CheckoutItem.scss';
 
 const CheckoutItem = ({ cartItem }) => {

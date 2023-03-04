@@ -3,7 +3,7 @@ import CheckoutItem from '../../components/CheckoutItem/CheckoutItem';
 import {
   selectCartItems,
   selectCartTotal
-} from '../../store/cart/CartSelector';
+} from '../../store/cart/cartSelector';
 import './Checkout.scss';
 
 const Checkout = () => {
