@@ -9,7 +9,13 @@ indent_size = 2
 end_of_line = lf
 ```
 
-## 2. Create .prettierrc file to specify the format of our code
+## 2. Install devDependencies to support prettier and eslint
+
+```
+npm i -D prettier eslint-plugin-prettier eslint-config-prettier eslint-config-react-app
+```
+
+## 3. Create .prettierrc file to specify the format of our code
 
 ```
 {
@@ -23,7 +29,7 @@ end_of_line = lf
 }
 ```
 
-## 3. [OPTIONAL] Create .prettierignore file to ignore files/folders that don't need the format
+## 4. [OPTIONAL] Create .prettierignore file to ignore files/folders that don't need the format
 
 ```
 # Ignore artifacts:
@@ -35,12 +41,6 @@ dist
 *.html
 
 package-lock.json
-```
-
-## 4. Install devDependencies to support prettier and eslint
-
-```
-npm i -D prettier eslint-plugin-prettier eslint-config-prettier eslint-config-react-app
 ```
 
 ## 5. Create .eslintrc file to specify the rule of our code
@@ -66,7 +66,16 @@ npm i -D prettier eslint-plugin-prettier eslint-config-prettier eslint-config-re
 }
 ```
 
-## 6. Add these scripts to package.json file
+## 6. [OPTIONAL] Create .eslintignore file to ignore files/folders that don't need the linting
+
+```
+node_modules
+dist
+build
+test
+```
+
+## 7. Add these scripts to package.json file for linting and formatting
 
 ```
 "lint": "eslint --ext js,jsx,ts,tsx src/",
