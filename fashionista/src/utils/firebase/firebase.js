@@ -95,8 +95,8 @@ const createUserDocumentFromAuth = async (
     }
   }
   // if user data exists
-  // return userDocRef
-  return userDocRef;
+  // return userSnapshot
+  return userSnapshot;
 };
 
 const createAuthUserWithEmailAndPassword = async (email, password) => {
@@ -116,6 +116,19 @@ const signOutUser = async () => await signOut(auth);
 const onAuthStateChangedListener = callback =>
   onAuthStateChanged(auth, callback);
 
+const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      userAuth => {
+        unsubscribe();
+        resolve(userAuth);
+      },
+      reject
+    );
+  });
+};
+
 export {
   auth,
   signInWithGooglePopup,
@@ -127,5 +140,6 @@ export {
   signOutUser,
   onAuthStateChangedListener,
   addCollectionAndDocuments,
-  getCategoriesAndDocument
+  getCategoriesAndDocument,
+  getCurrentUser
 };

@@ -6,23 +6,29 @@ import Checkout from './routes/Checkout/Checkout';
 import Home from './routes/Home/Home';
 import Navigation from './routes/Navigation/Navigation';
 import Shop from './routes/Shop/Shop';
-import { setCurrentUser } from './store/user/userAction';
-import {
-  createUserDocumentFromAuth,
-  onAuthStateChangedListener
-} from './utils/firebase/firebase';
+import { checkUserSession } from './store/user/userAction';
+
+/* No longer used, I have migrated to Redux-saga, keep this for reference */
+// import { setCurrentUser } from './store/user/userAction';
+// import {
+//   createUserDocumentFromAuth,
+//   onAuthStateChangedListener
+// } from './utils/firebase/firebase';
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChangedListener(user => {
-      if (user) {
-        createUserDocumentFromAuth(user);
-      }
-      dispatch(setCurrentUser(user));
-    });
-    return unsubscribe;
+    /* No longer used, I have migrated to Redux-saga, keep this for reference */
+    // const unsubscribe = onAuthStateChangedListener(user => {
+    //   if (user) {
+    //     createUserDocumentFromAuth(user);
+    //   }
+    //   dispatch(setCurrentUser(user));
+    // });
+    // return unsubscribe;
+
+    dispatch(checkUserSession());
   }, []);
 
   return (

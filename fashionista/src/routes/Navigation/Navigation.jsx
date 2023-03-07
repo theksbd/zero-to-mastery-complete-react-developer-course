@@ -1,12 +1,12 @@
 import { Fragment } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { ReactComponent as FashionistaLogo } from '../../assets/crown.svg';
 import CartDropdown from '../../components/CartDropdown/CartDropdown';
 import CartIcon from '../../components/CartIcon/CartIcon';
 import { selectIsCartOpen } from '../../store/cart/cartSelector';
+import { signOutStart } from '../../store/user/userAction';
 import { selectCurrentUser } from '../../store/user/userSelector';
-import { signOutUser } from '../../utils/firebase/firebase';
 import {
   LogoContainer,
   NavLink,
@@ -14,9 +14,14 @@ import {
   NavigationContainer
 } from './NavigationStyle';
 
+// import { signOutUser } from '../../utils/firebase/firebase'; /* No longer used, I have migrated to Redux-saga, keep this for reference */
+
 const Navigation = () => {
+  const dispatch = useDispatch();
   const isCartOpen = useSelector(selectIsCartOpen);
   const currentUser = useSelector(selectCurrentUser);
+
+  const signOutUser = () => dispatch(signOutStart());
 
   return (
     <Fragment>

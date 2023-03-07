@@ -1,11 +1,15 @@
 import { useState } from 'react';
-import {
-  createAuthUserWithEmailAndPassword,
-  createUserDocumentFromAuth
-} from '../../utils/firebase/firebase';
 import Button from '../Button/Button';
 import FormInput from '../FormInput/FormInput';
 import './SignUpForm.scss';
+import { useDispatch } from 'react-redux';
+import { signUpStart } from '../../store/user/userAction';
+
+/* No longer used, I have migrated to Redux-saga, keep this for reference */
+// import {
+//   createAuthUserWithEmailAndPassword,
+//   createUserDocumentFromAuth
+// } from '../../utils/firebase/firebase';
 
 const defaultFormFields = {
   displayName: '',
@@ -15,6 +19,7 @@ const defaultFormFields = {
 };
 
 const SignUpForm = () => {
+  const dispatch = useDispatch();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
@@ -39,11 +44,14 @@ const SignUpForm = () => {
     }
 
     try {
-      const response = await createAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
-      createUserDocumentFromAuth(response.user, { displayName });
+      /* No longer used, I have migrated to Redux-saga, keep this for reference */
+      // const response = await createAuthUserWithEmailAndPassword(
+      //   email,
+      //   password
+      // );
+      // createUserDocumentFromAuth(response.user, { displayName });
+
+      dispatch(signUpStart(email, password, displayName));
       resetFormFields();
     } catch (err) {
       if (err.code === 'auth/email-already-in-use') {

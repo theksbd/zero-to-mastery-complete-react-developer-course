@@ -1,11 +1,18 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import {
-  signInAuthUserWithEmailAndPassword,
-  signInWithGooglePopup
-} from '../../utils/firebase/firebase';
+  emailSignInStart,
+  googleSignInStart
+} from '../../store/user/userAction';
 import Button, { BUTTON_TYPE_CLASSES } from '../Button/Button';
 import FormInput from '../FormInput/FormInput';
 import './SignInForm.scss';
+
+/* No longer used, I have migrated to Redux-saga, keep this for reference */
+// import {
+//   signInAuthUserWithEmailAndPassword,
+//   signInWithGooglePopup
+// } from '../../utils/firebase/firebase';
 
 const defaultFormFields = {
   email: '',
@@ -13,11 +20,13 @@ const defaultFormFields = {
 };
 
 const SignInForm = () => {
+  const dispatch = useDispatch();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
   const signInWithGoogle = async () => {
-    await signInWithGooglePopup();
+    // await signInWithGooglePopup(); /* No longer used, I have migrated to Redux-saga, keep this for reference */
+    dispatch(googleSignInStart());
   };
 
   const resetFormFields = () => {
@@ -35,7 +44,10 @@ const SignInForm = () => {
   const handleSubmitForm = async e => {
     e.preventDefault();
     try {
-      await signInAuthUserWithEmailAndPassword(email, password);
+      /* No longer used, I have migrated to Redux-saga, keep this for reference */
+      // await signInAuthUserWithEmailAndPassword(email, password);
+
+      dispatch(emailSignInStart(email, password));
       resetFormFields();
     } catch (err) {
       switch (err.code) {
